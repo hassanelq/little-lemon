@@ -4,7 +4,10 @@ import { images } from "../../constants";
 import {HiMenuAlt4, HiX} from 'react-icons/hi';
 import { useState } from "react";
 
-const navItems = ['Home', 'About', 'Menu', 'Reservations', 'Order Online', 'Login'];
+import {Link } from "react-router-dom";
+
+// Navigate to Coponents on with id on different page
+import { HashLink } from 'react-router-hash-link';
 
 const Navbar = () => {
     const [toggle, setToggle] = useState(false);
@@ -18,20 +21,13 @@ const Navbar = () => {
             </div>
 
         <ul className="app__navbar-links">
-            {
-                navItems.map((item) => {
-                    return (
-                        <li className="app__flex p_text"
-                        key={`key-${item}`}>
-                            <a href={`#${item}`}>
-                                {item}
-                            </a>
-                        </li>
-                    );
-                })
-            }
+            <Link className="link" to={"/"}>Home</Link>
+            <Link className="link" to={'/Reservations'}>Reservation</Link>
+            <Link className="link" to={"/OrderOnline"}>OrderOnline</Link>
+            <HashLink className="link" smooth to="/#Menu">Menu</HashLink>
+            <HashLink className="link" smooth to="/#About">About</HashLink>
         </ul>
-
+           
         {/* Mobile Navigation */}
         
         <div className="app__navbar-menu">
@@ -48,23 +44,13 @@ const Navbar = () => {
                     }} 
                     className="app__navbar-cancel"
                 />
-                <ul>
-                    {
-                        navItems.map(
-                            (item) => {
-                                return (
-                                    <li key={{item}}>
-                                        <a href={`#${item}`}
-                                            onClick={() => { setToggle(false)}}
-                                        >
-                                            {item}
-                                        </a>
-                                    </li>
-                                );
-                            }
-                        )
-                    }
-                </ul>
+
+                <Link className="link" to={"/"} onClick={() => { setToggle(false)}}>Home</Link>
+                <Link className="link" to={'/Reservations'} onClick={() => { setToggle(false)}}>Reservation</Link>
+                <Link className="link" to={"/OrderOnline"} onClick={() => { setToggle(false)}}>OrderOnline</Link>
+                <HashLink className="link" smooth to="/#Menu" onClick={() => { setToggle(false)}}>Menu</HashLink>
+                <HashLink className="link" smooth to="/#About" onClick={() => { setToggle(false)}}>About</HashLink>     
+
              </div>)
             }
         </div>
