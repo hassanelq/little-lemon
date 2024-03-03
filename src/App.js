@@ -14,8 +14,6 @@ import DataContext from "./DataContext";
 import ConfirmedBooking from "./components/Reservations/ConfirmedBooking";
 
 function App() {
-  // use state to set data
-  // use effect to get path
   const location = useLocation();
   const [path, setPath] = useState(location.pathname);
 
